@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pitlane OS — Plateforme de pilotage</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ✅ CSS externe -->
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="app">
+
+  <!-- ============================== SIDEBAR ============================== -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-mark">P</div>
+      <div>
+        <div class="logo-text">PITLANE<span>.</span>OS</div>
+        <div class="logo-sub">Performance Suite</div>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-title">Pilotage</div>
+      <div class="nav-item active" onclick="showPage('dashboard',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        Dashboard
+      </div>
+      <div class="nav-item" onclick="showPage('portfolio',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7h-4V5l-2-2h-4L8 5v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM10 5h4v2h-4V5z"/></svg>
+        Portfolio Projets
+      </div>
+      <div class="nav-item" onclick="showPage('tasks',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9l2 2 4-4"/></svg>
+        Tâches
+        <span class="nav-badge">23</span>
+      </div>
+      <div class="nav-item" onclick="showPage('risks',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01M5 19h14a2 2 0 0 0 1.84-2.75L13.74 4a2 2 0 0 0-3.48 0L3.16 16.25A2 2 0 0 0 5 19z"/></svg>
+        Risques
+        <span class="nav-badge">7</span>
+      </div>
+      <div class="nav-item" onclick="showPage('workload',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg>
+        Charge de Travail
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-title">Collaboration</div>
+      <div class="nav-item" onclick="showPage('calendar',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/></svg>
+        Agenda
+      </div>
+      <div class="nav-item" onclick="showPage('chat',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        Conversations
+        <span class="nav-badge">5</span>
+      </div>
+      <div class="nav-item" onclick="showPage('teams',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5 5 0 0 1 9.288 0M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/></svg>
+        Équipes
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-title">Connaissance</div>
+      <div class="nav-item" onclick="showPage('documents',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg>
+        Documents
+      </div>
+      <div class="nav-item" onclick="showPage('wiki',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        Wiki Interne
+      </div>
+      <div class="nav-item" onclick="showPage('automations',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Automatisations
+        <span class="nav-badge gray">12</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-title">Système</div>
+      <div class="nav-item" onclick="showPage('notifications',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6.002 6.002 0 0 0-4-5.659V5a2 2 0 1 0-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 1 1-6 0v-1m6 0H9"/></svg>
+        Notifications
+        <span class="nav-badge">9</span>
+      </div>
+      <div class="nav-item" onclick="showPage('admin',this)">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg>
+        Paramètres
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <div class="avatar">AM</div>
+        <div class="user-info">
+          <div class="user-name">Alex Martin</div>
+          <div class="user-role">Super Admin</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============================== MAIN ============================== -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="breadcrumb">
+        <span>Pitlane OS</span>
+        <span class="sep">/</span>
+        <span id="bcPage">Dashboard</span>
+      </div>
+      <div class="search-bar">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/></svg>
+        <input placeholder="Rechercher projets, tâches, documents..." />
+        <span class="search-kbd">⌘K</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></button>
+        <button class="icon-btn">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0 1 18 14.158V11a6 6 0 0 0-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5"/></svg>
+          <span class="dot"></span>
+        </button>
+        <button class="btn-primary">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+          Créer
+        </button>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- =========================================================== -->
+      <!-- DASHBOARD                                                    -->
+      <!-- =========================================================== -->
+      <div class="page active" id="page-dashboard">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Tableau de bord exécutif</h1>
+            <p class="page-subtitle">Vue d'ensemble · Lundi 9 juin 2026</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn-ghost"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 0 1 2-2h11l5 5v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Exporter</button>
+            <button class="btn-ghost"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v2.586a1 1 0 0 1-.293.707l-6.414 6.414a1 1 0 0 0-.293.707V17l-4 4v-6.586a1 1 0 0 0-.293-.707L3.293 7.293A1 1 0 0 1 3 6.586V4z"/></svg>Filtrer</button>
+          </div>
+        </div>
+
+        <!-- KPI -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label"><div class="kpi-icon" style="background:rgba(225,6,0,0.15);color:var(--red-soft);"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 7h-4V5l-2-2h-4L8 5v2H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg></div>Projets actifs</div>
+            <div class="kpi-value">47</div>
+            <div class="kpi-trend up"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg> +12% vs mois dernier</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label"><div class="kpi-icon" style="background:rgba(34,197,94,0.15);color:var(--green);"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>Tâches terminées</div>
+            <div class="kpi-value">1 284</div>
+            <div class="kpi-trend up"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg> +24% cette semaine</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label"><div class="kpi-icon" style="background:rgba(245,158,11,0.15);color:var(--orange);"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></div>Tâches critiques</div>
+            <div class="kpi-value">23</div>
+            <div class="kpi-trend down"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg> -5 depuis hier</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label"><div class="kpi-icon" style="background:rgba(59,130,246,0.15);color:var(--blue);"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857"/></svg></div>Charge équipe</div>
+            <div class="kpi-value">82%</div>
+            <div class="kpi-trend up"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg> Optimal</div>
+          </div>
+        </div>
+
+        <div class="dash-grid">
+          <!-- Performance chart -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">Performance globale</div>
+                <div style="font-size:11px;color:var(--text-3);margin-top:3px;">Productivité mensuelle · 12 derniers mois</div>
+              </div>
+              <div class="view-toggle">
+                <button class="active">Mois</button>
+                <button>Trimestre</button>
+                <button>Année</button>
+              </div>
+            </div>
+            <div class="chart">
+              <svg viewBox="0 0 600 240" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#E10600" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="#E10600" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <g class="chart-grid">
+                  <line x1="40" y1="40" x2="600" y2="40"/>
+                  <line x1="40" y1="90" x2="600" y2="90"/>
+                  <line x1="40" y1="140" x2="600" y2="140"/>
+                  <line x1="40" y1="190" x2="600" y2="190"/>
+                </g>
+                <g class="chart-axis">
+                  <text x="10" y="44">100</text>
+                  <text x="10" y="94">75</text>
+                  <text x="10" y="144">50</text>
+                  <text x="10" y="194">25</text>
+                </g>
+                <path d="M 50 160 L 100 130 L 150 145 L 200 110 L 250 95 L 300 115 L 350 80 L 400 90 L 450 60 L 500 70 L 550 50 L 590 45 L 590 200 L 50 200 Z" fill="url(#g1)"/>
+                <path d="M 50 160 L 100 130 L 150 145 L 200 110 L 250 95 L 300 115 L 350 80 L 400 90 L 450 60 L 500 70 L 550 50 L 590 45" stroke="#E10600" stroke-width="2.5" fill="none"/>
+                <g fill="#E10600">
+                  <circle cx="50" cy="160" r="3"/><circle cx="100" cy="130" r="3"/><circle cx="150" cy="145" r="3"/>
+                  <circle cx="200" cy="110" r="3"/><circle cx="250" cy="95" r="3"/><circle cx="300" cy="115" r="3"/>
+                  <circle cx="350" cy="80" r="3"/><circle cx="400" cy="90" r="3"/><circle cx="450" cy="60" r="3"/>
+                  <circle cx="500" cy="70" r="3"/><circle cx="550" cy="50" r="3"/><circle cx="590" cy="45" r="4" stroke="#fff" stroke-width="2"/>
+                </g>
+                <g class="chart-axis">
+                  <text x="50" y="220">Jul</text><text x="100" y="220">Aoû</text><text x="150" y="220">Sep</text>
+                  <text x="200" y="220">Oct</text><text x="250" y="220">Nov</text><text x="300" y="220">Déc</text>
+                  <text x="350" y="220">Jan</text><text x="400" y="220">Fév</text><text x="450" y="220">Mar</text>
+                  <text x="500" y="220">Avr</text><text x="550" y="220">Mai</text><text x="585" y="220">Juin</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Activity feed -->
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">Activité récente</div>
+              <span class="panel-link">Voir tout</span>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot green"></div>
+              <div class="activity-content">
+                <div class="activity-text"><strong>Sarah K.</strong> <span>a validé</span> <strong>Spec API v2.4</strong></div>
+                <div class="activity-time">Il y a 5 min</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot blue"></div>
+              <div class="activity-content">
+                <div class="activity-text"><strong>Thomas R.</strong> <span>a créé le projet</span> <strong>Migration Cloud Q3</strong></div>
+                <div class="activity-time">Il y a 22 min</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot red"></div>
+              <div class="activity-content">
+                <div class="activity-text"><span>Risque détecté sur</span> <strong>Refonte Site BMW</strong></div>
+                <div class="activity-time">Il y a 1 h</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot orange"></div>
+              <div class="activity-content">
+                <div class="activity-text"><strong>Léa M.</strong> <span>a commenté</span> <strong>Roadmap Q3</strong></div>
+                <div class="activity-time">Il y a 2 h</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot green"></div>
+              <div class="activity-content">
+                <div class="activity-text"><strong>Marc D.</strong> <span>a clôturé</span> <strong>Sprint 24</strong></div>
+                <div class="activity-time">Il y a 3 h</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-grid">
+          <!-- Deadlines -->
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">Échéances critiques de la semaine</div>
+              <span class="panel-link">Voir agenda</span>
+            </div>
+            <div class="deadline-item">
+              <div class="deadline-date"><div class="deadline-day">11</div><div class="deadline-month">Juin</div></div>
+              <div class="deadline-info">
+                <div class="deadline-title">Livraison MVP — Plateforme Mercedes Connect</div>
+                <div class="deadline-meta">Thomas R. · 3 livrables restants</div>
+              </div>
+              <span class="badge badge-red"><span class="dot-mini"></span>Critique</span>
+            </div>
+            <div class="deadline-item orange">
+              <div class="deadline-date"><div class="deadline-day">12</div><div class="deadline-month">Juin</div></div>
+              <div class="deadline-info">
+                <div class="deadline-title">Audit sécurité — Plateforme client Ferrari</div>
+                <div class="deadline-meta">Sarah K. · Validation requise</div>
+              </div>
+              <span class="badge badge-orange"><span class="dot-mini"></span>Haute</span>
+            </div>
+            <div class="deadline-item blue">
+              <div class="deadline-date"><div class="deadline-day">14</div><div class="deadline-month">Juin</div></div>
+              <div class="deadline-info">
+                <div class="deadline-title">Présentation comité direction Q3</div>
+                <div class="deadline-meta">Alex M. · Préparation slides</div>
+              </div>
+              <span class="badge badge-blue"><span class="dot-mini"></span>Normale</span>
+            </div>
+            <div class="deadline-item">
+              <div class="deadline-date"><div class="deadline-day">15</div><div class="deadline-month">Juin</div></div>
+              <div class="deadline-info">
+                <div class="deadline-title">Recette finale — Application Porsche Track</div>
+                <div class="deadline-meta">Équipe Mobile · 7 tâches</div>
+              </div>
+              <span class="badge badge-red"><span class="dot-mini"></span>Critique</span>
+            </div>
+          </div>
+
+          <!-- Quick access -->
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">Accès rapides</div>
+            </div>
+            <div class="quick-grid">
+              <div class="quick-action">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+                <span>Nouveau projet</span>
+              </div>
+              <div class="quick-action">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg>
+                <span>Nouveau document</span>
+              </div>
+              <div class="quick-action">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                <span>Discussion</span>
+              </div>
+              <div class="quick-action">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/></svg>
+                <span>Réunion</span>
+              </div>
+            </div>
+            <div style="margin-top:18px;padding-top:18px;border-top:1px solid var(--border);">
+              <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);font-weight:600;margin-bottom:10px;">Progression Q2 2026</div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;"><span>Objectifs</span><span style="color:var(--green);font-weight:600;">78%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:78%;background:linear-gradient(90deg,var(--green),#16a34a);"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin:14px 0 6px;"><span>Budget</span><span style="color:var(--orange);font-weight:600;">64%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:64%;background:linear-gradient(90deg,var(--orange),#d97706);"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin:14px 0 6px;"><span>Satisfaction</span><span style="color:var(--blue);font-weight:600;">91%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:91%;background:linear-gradient(90deg,var(--blue),#2563eb);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- PORTFOLIO                                                    -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-portfolio">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Portfolio Projets</h1>
+            <p class="page-subtitle">47 projets actifs · Pilotage stratégique</p>
+          </div>
+          <div class="page-actions">
+            <div class="view-toggle">
+              <button class="active"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>Cartes</button>
+              <button><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM9 3v18M15 3v18"/></svg>Kanban</button>
+              <button><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7h12m-12 5h12m-12 5h12M3 7h.01M3 12h.01M3 17h.01"/></svg>Tableau</button>
+              <button><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17V7m0 10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m0 10h6m-6-10h6m0 10a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2m0 10V7"/></svg>Gantt</button>
+            </div>
+            <button class="btn-primary"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>Nouveau projet</button>
+          </div>
+        </div>
+
+        <div class="filters">
+          <div class="filter-chip">Statut : Actif <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg></div>
+          <div class="filter-chip">Priorité : Haute <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg></div>
+          <div class="filter-chip">+ Équipe</div>
+          <div class="filter-chip">+ Client</div>
+          <div class="filter-chip">+ Date</div>
+        </div>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-head">
+              <div>
+                <div class="project-client">Ferrari Racing</div>
+                <div class="project-name">Plateforme Connect 2.0</div>
+              </div>
+              <div class="health green">92</div>
+            </div>
+            <div class="project-meta">
+              <span>📅 15 Juil</span>
+              <span>💰 250k€</span>
+              <span><span class="badge badge-red" style="padding:1px 6px;font-size:10px;">Critique</span></span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:72%;"></div></div>
+            <div class="progress-text"><span>Progression</span><span>72%</span></div>
+            <div class="project-footer">
+              <div class="avatars-stack">
+                <div class="avatar" style="background:linear-gradient(135deg,#E10600,#8B0000);">SK</div>
+                <div class="avatar" style="background:linear-gradient(135deg,#3B82F6,#1e40af);">TR</div>
+                <div class="avatar" style="background:linear-gradient(135deg,#22C55E,#16a34a);">LM</div>
+                <div class="avatar" style="background:var(--border-2);color:var(--text-2);">+3</div>
+              </div>
+              <span class="badge badge-green"><span class="dot-mini"></span>Sain</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-head">
+              <div>
+                <div class="project-client">Mercedes AMG</div>
+                <div class="project-name">Refonte Application Mobile</div>
+              </div>
+              <div class="health orange">68</div>
+            </div>
+            <div class="project-meta">
+              <span>📅 28 Juil</span>
+              <span>💰 180k€</span>
+              <span><span class="badge badge-orange" style="padding:1px 6px;font-size:10px;">Haute</span></span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:45%;background:linear-gradient(90deg,var(--orange),#d97706);"></div></div>
+            <div class="progress-text"><span>Progression</span><span>45%</span></div>
+            <div class="project-footer">
+              <div class="avatars-stack">
+                <div class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6d28d9);">MD</div>
+                <div class="avatar" style="background:linear-gradient(135deg,#F59E0B,#b45309);">JP</div>
+                <div class="avatar" style="background:var(--border-2);color:var(--text-2);">+2</div>
+              </div>
+              <span class="badge badge-orange"><span class="dot-mini"></span>Attention</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-head">
+              <div>
+                <div class="project-client">Porsche Digital</div>
+                <div class="project-name">Track Experience Platform</div>
+              </div>
+              <div class="health red">42</div>
+            </div>
+            <div class="project-meta">
+              <span>📅 10 Juin</span>
+              <span>💰 320k€</span>
+              <span><span class="badge badge-red" style="padding:1px 6px;font-size:10px;">Critique</span></span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:88%;background:linear-gradient(90deg,var(--red),var(--red-soft));"></div></div>
+            <div class="progress-text"><span>Progression</span><span>88%</span></div>
+            <div class="project-footer">
+              <div class="avatars-stack">
+                <div class="avatar">AM</div>
+                <div class="avatar" style="background:linear-gradient(135deg,#22C55E,#16a34a);">EL</div>
+                <div class="avatar" style="background:var(--border-2);color:var(--text-2);">+4</div>
+              </div>
+              <span class="badge badge-red"><span class="dot-mini"></span>Risque</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-head">
+              <div>
+                <div class="project-client">BMW Motorsport</div>
+                <div class="project-name">Dashboard Analytics V3</div>
+              </div>
+              <div class="health green">88</div>
+            </div>
+            <div class="project-meta">
+              <span>📅 5 Sept</span>
+              <span>💰 145k€</span>
+              <span><span class="badge badge-blue" style="padding:1px 6px;font-size:10px;">Normale</span></span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:34%;"></div></div>
+            <div class="progress-text"><span>Progression</span><span>34%</span></div>
+            <div class="project-footer">
+              <div class="avatars-stack">
+                <div class="avatar" style="background:linear-gradient(135deg,#3B82F6,#1e40af);">PL</div>
+                <div class="avatar" style="background:linear-gradient(135deg,#E10600,#8B0000);">NR</div>
+              </div>
+              <span class="badge badge-green"><span class="dot-mini"></span>Sain</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-head">
+              <div>
+                <div class="project-client">McLaren F1 Team</div>
+                <div class="project-name">Telemetry Suite Pro</div>
+              </div>
+              <div class="health green">95</div>
+            </div>
+            <div class="project-meta">
+              <span>📅 20 Août</span>
+              <span>💰 410k€</span>
+              <span><span class="badge badge-orange" style="padding:1px 6px;font-size:10px;">Haute</span></span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:58%;background:linear-gradient(90deg,var(--green),#16a34a);"></div></div>
+            <div class="progress-text"><span>Progression</span><span>58%</span></div>
+            <div class="project-footer">
+              <div class="avatars-stack">
+                <div class="avatar" style="background:linear-gradient(135deg,#22C55E,#16a34a);">CV</div>
+                <div class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6d28d9);">RB</div>
+                <div class="avatar" style="background:var(--border-2);color:var(--text-2);">+5</div>
+              </div>
+              <span class="badge badge-green"><span class="dot-mini"></span>Sain</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-head">
+              <div>
+                <div class="project-client">Aston Martin</div>
+                <div class="project-name">CRM Concession 360°</div>
+              </div>
+              <div class="health orange">72</div>
+            </div>
+            <div class="project-meta">
+              <span>📅 30 Sept</span>
+              <span>💰 95k€</span>
+              <span><span class="badge badge-blue" style="padding:1px 6px;font-size:10px;">Normale</span></span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:22%;background:linear-gradient(90deg,var(--orange),#d97706);"></div></div>
+            <div class="progress-text"><span>Progression</span><span>22%</span></div>
+            <div class="project-footer">
+              <div class="avatars-stack">
+                <div class="avatar" style="background:linear-gradient(135deg,#F59E0B,#b45309);">YT</div>
+                <div class="avatar" style="background:linear-gradient(135deg,#3B82F6,#1e40af);">KB</div>
+              </div>
+              <span class="badge badge-orange"><span class="dot-mini"></span>Attention</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- TASKS                                                        -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-tasks">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Gestion des tâches</h1>
+            <p class="page-subtitle">Vue Kanban · Sprint 25 en cours</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn-ghost">Filtres</button>
+            <button class="btn-primary"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>Nouvelle tâche</button>
+          </div>
+        </div>
+
+        <div class="kanban">
+          <div class="kanban-col">
+            <div class="kanban-col-head">
+              <div class="kanban-col-title">⚪ À faire <span class="kanban-count">8</span></div>
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-tags"><span class="badge badge-purple">Design</span></div>
+              <div class="kanban-card-title">Maquette nouveau parcours onboarding</div>
+              <div class="kanban-card-meta"><span>📅 14 Juin</span><div class="avatar" style="width:22px;height:22px;font-size:9px;">LM</div></div>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-tags"><span class="badge badge-blue">API</span><span class="badge badge-red">Critique</span></div>
+              <div class="kanban-card-title">Refonte endpoint /users avec pagination</div>
+              <div class="kanban-card-meta"><span>📅 12 Juin</span><div class="avatar" style="width:22px;height:22px;font-size:9px;background:#3B82F6;">TR</div></div>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-tags"><span class="badge badge-orange">Docs</span></div>
+              <div class="kanban-card-title">Mettre à jour documentation technique v2</div>
+              <div class="kanban-card-meta"><span>📅 18 Juin</span><div class="avatar" style="width:22px;height:22px;font-size:9px;background:#22C55E;">SK</div></div>
+            </div>
+          </div>
+
+          <div class="kanban-col">
+            <div class="kanban-col-head">
+              <div class="kanban-col-title">🔵 En cours <span class="kanban-count">5</span></div>
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-tags"><span class="badge badge-green">Frontend</span></div>
+              <div class="kanban-card-title">Implémentation dashboard analytique</div>
+              <div class="kanban-card-meta"><span>⏱ 12h / 16h</span><div class="avatar" style="width:22px;height:22px;font-size:9px;background:#8B5CF6;">MD</div></div>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-tags"><span class="badge badge-blue">Backend</span><span class="badge badge-orange">Haute</span></div>
+              <div class="kanban-card-title">Migration base de données PostgreSQL 16</div>
+              <div class="kanban-card-meta"><span>⏱ 8h / 20h</span><div class="avatar" style="width:22px;height:22px;font-size:9px;background:#F59E0B;">JP</div></div>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-tags"><span class="badge badge-purple">UX</span></div>
+              <div class="kanban-card-title">Tests utilisateurs sur prototype mobile</div>
+              <div class="kanban-card-meta"><span>📅 16 Juin</span><div class="avatar" style="width:22px;height:22px;font-size:9px;">EL</div></div>
+            </div>
+          </div>
+
+          <div class="kanban-col">
+            <div class="kanban-col-head">
+              <div class="kanban-col-title">🟡 En révision <span class="kanban-count">3</span></div>
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-tags"><span class="badge badge-blue">Code Review</span></div>
+              <div class="kanban-card-title">PR #482 - Refactor auth module</div>
+              <div class="kanban-card-meta"><span>👁 3 reviewers</span><div class="avatar" style="width:22px;height:22px;font-size:9px;background:#3B82F6;">TR</div></div>
+            </div>
+            <div class="kanban-card">
+              <div class="kanban-tags"><span class="badge badge-green">QA</span></div>
+              <div class="kanban-card-title">Tests E2E module facturation</div>
+              <div class="kanban-card-meta"><span>📅 10 Juin</span><div class="avatar" style="width:22px;height:22px;font-size:9px;background:#22C55E;">CV</div></div>
+            </div>
+          </div>
+
+          <div class="kanban-col">
+            <div class="kanban-col-head">
+              <div class="kanban-col-title">🟢 Terminé <span class="kanban-count">12</span></div>
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+            </div>
+            <div class="kanban-card" style="opacity:0.7;">
+              <div class="kanban-tags"><span class="badge badge-gray">Done</span></div>
+              <div class="kanban-card-title">Configuration CI/CD GitHub Actions</div>
+              <div class="kanban-card-meta"><span>✓ 8 Juin</span><div class="avatar" style="width:22px;height:22px;font-size:9px;">AM</div></div>
+            </div>
+            <div class="kanban-card" style="opacity:0.7;">
+              <div class="kanban-tags"><span class="badge badge-gray">Done</span></div>
+              <div class="kanban-card-title">Intégration paiement Stripe</div>
+              <div class="kanban-card-meta"><span>✓ 7 Juin</span><div class="avatar" style="width:22px;height:22px;font-size:9px;background:#E10600;">SK</div></div>
+            </div>
+            <div class="kanban-card" style="opacity:0.7;">
+              <div class="kanban-tags"><span class="badge badge-gray">Done</span></div>
+              <div class="kanban-card-title">Setup environnement staging</div>
+              <div class="kanban-card-meta"><span>✓ 5 Juin</span><div class="avatar" style="width:22px;height:22px;font-size:9px;background:#22C55E;">LM</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- RISKS                                                        -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-risks">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Risques & Dépendances</h1>
+            <p class="page-subtitle">7 risques actifs · 3 critiques</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn-ghost">Exporter</button>
+            <button class="btn-primary"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>Déclarer un risque</button>
+          </div>
+        </div>
+
+        <div class="risk-layout">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">Registre des risques</div>
+              <span class="panel-link">Filtrer</span>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr><th>Risque</th><th>Impact</th><th>Probabilité</th><th>Criticité</th><th>Responsable</th><th>Statut</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div style="font-weight:600;">Retard livraison fournisseur</div><div style="font-size:11px;color:var(--text-3);margin-top:2px;">Projet Porsche Track</div></td>
+                  <td><span class="badge badge-red">Élevé</span></td>
+                  <td><span class="badge badge-orange">75%</span></td>
+                  <td><span class="badge badge-red">Critique</span></td>
+                  <td><div class="avatar" style="width:26px;height:26px;font-size:10px;">AM</div></td>
+                  <td><span class="badge badge-red"><span class="dot-mini"></span>Ouvert</span></td>
+                </tr>
+                <tr>
+                  <td><div style="font-weight:600;">Indisponibilité expert backend</div><div style="font-size:11px;color:var(--text-3);margin-top:2px;">Tous projets</div></td>
+                  <td><span class="badge badge-orange">Moyen</span></td>
+                  <td><span class="badge badge-red">85%</span></td>
+                  <td><span class="badge badge-red">Critique</span></td>
+                  <td><div class="avatar" style="width:26px;height:26px;font-size:10px;background:#3B82F6;">TR</div></td>
+                  <td><span class="badge badge-orange"><span class="dot-mini"></span>En cours</span></td>
+                </tr>
+                <tr>
+                  <td><div style="font-weight:600;">Dépassement budget Q2</div><div style="font-size:11px;color:var(--text-3);margin-top:2px;">Refonte Mercedes</div></td>
+                  <td><span class="badge badge-red">Élevé</span></td>
+                  <td><span class="badge badge-orange">60%</span></td>
+                  <td><span class="badge badge-orange">Haute</span></td>
+                  <td><div class="avatar" style="width:26px;height:26px;font-size:10px;background:#22C55E;">SK</div></td>
+                  <td><span class="badge badge-orange"><span class="dot-mini"></span>En cours</span></td>
+                </tr>
+                <tr>
+                  <td><div style="font-weight:600;">Vulnérabilité sécurité signalée</div><div style="font-size:11px;color:var(--text-3);margin-top:2px;">API Ferrari Connect</div></td>
+                  <td><span class="badge badge-red">Élevé</span></td>
+                  <td><span class="badge badge-green">25%</span></td>
+                  <td><span class="badge badge-orange">Moyenne</span></td>
+                  <td><div class="avatar" style="width:26px;height:26px;font-size:10px;background:#8B5CF6;">MD</div></td>
+                  <td><span class="badge badge-green"><span class="dot-mini"></span>Mitigé</span></td>
+                </tr>
+                <tr>
+                  <td><div style="font-weight:600;">Turnover équipe Design</div><div style="font-size:11px;color:var(--text-3);margin-top:2px;">Département Design</div></td>
+                  <td><span class="badge badge-orange">Moyen</span></td>
+                  <td><span class="badge badge-orange">50%</span></td>
+                  <td><span class="badge badge-orange">Moyenne</span></td>
+                  <td><div class="avatar" style="width:26px;height:26px;font-size:10px;background:#F59E0B;">EL</div></td>
+                  <td><span class="badge badge-blue"><span class="dot-mini"></span>Surveillé</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header"><div class="panel-title">Matrice de criticité</div></div>
+            <div class="risk-matrix">
+              <div class="matrix-cell label"></div>
+              <div class="matrix-cell label">Très faible</div>
+              <div class="matrix-cell label">Faible</div>
+              <div class="matrix-cell label">Moyen</div>
+              <div class="matrix-cell label">Élevé</div>
+              <div class="matrix-cell label">Critique</div>
+
+              <div class="matrix-cell label">95%</div>
+              <div class="matrix-cell med"></div>
+              <div class="matrix-cell high"></div>
+              <div class="matrix-cell crit"><span class="count">1</span></div>
+              <div class="matrix-cell crit"></div>
+              <div class="matrix-cell crit"></div>
+
+              <div class="matrix-cell label">75%</div>
+              <div class="matrix-cell low"></div>
+              <div class="matrix-cell med"></div>
+              <div class="matrix-cell high"></div>
+              <div class="matrix-cell crit"><span class="count">1</span></div>
+              <div class="matrix-cell crit"></div>
+
+              <div class="matrix-cell label">50%</div>
+              <div class="matrix-cell low"></div>
+              <div class="matrix-cell low"></div>
+              <div class="matrix-cell med"><span class="count">1</span></div>
+              <div class="matrix-cell high"><span class="count">1</span></div>
+              <div class="matrix-cell crit"></div>
+
+              <div class="matrix-cell label">25%</div>
+              <div class="matrix-cell low"></div>
+              <div class="matrix-cell low"></div>
+              <div class="matrix-cell med"></div>
+              <div class="matrix-cell high"><span class="count">1</span></div>
+              <div class="matrix-cell crit"></div>
+
+              <div class="matrix-cell label">5%</div>
+              <div class="matrix-cell low"></div>
+              <div class="matrix-cell low"></div>
+              <div class="matrix-cell low"></div>
+              <div class="matrix-cell med"></div>
+              <div class="matrix-cell high"></div>
+            </div>
+
+            <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+              <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);font-weight:600;margin-bottom:10px;">Légende</div>
+              <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;">
+                <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;background:rgba(34,197,94,0.4);border-radius:3px;"></span>Faible</div>
+                <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;background:rgba(245,158,11,0.4);border-radius:3px;"></span>Modéré</div>
+                <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;background:rgba(225,6,0,0.4);border-radius:3px;"></span>Élevé</div>
+                <div style="display:flex;align-items:center;gap:8px;"><span style="width:12px;height:12px;background:rgba(225,6,0,0.8);border-radius:3px;"></span>Critique</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- CALENDAR                                                     -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-calendar">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Agenda · Juin 2026</h1>
+            <p class="page-subtitle">Planning consolidé multi-équipes</p>
+          </div>
+          <div class="page-actions">
+            <div class="view-toggle">
+              <button>Jour</button>
+              <button>Semaine</button>
+              <button class="active">Mois</button>
+              <button>Équipe</button>
+            </div>
+            <button class="btn-primary"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>Événement</button>
+          </div>
+        </div>
+
+        <div class="calendar-grid">
+          <div class="cal-head">Lun</div><div class="cal-head">Mar</div><div class="cal-head">Mer</div><div class="cal-head">Jeu</div><div class="cal-head">Ven</div><div class="cal-head">Sam</div><div class="cal-head">Dim</div>
+
+          <div class="cal-cell muted"><div class="cal-day">26</div></div>
+          <div class="cal-cell muted"><div class="cal-day">27</div></div>
+          <div class="cal-cell muted"><div class="cal-day">28</div></div>
+          <div class="cal-cell muted"><div class="cal-day">29</div></div>
+          <div class="cal-cell muted"><div class="cal-day">30</div></div>
+          <div class="cal-cell muted"><div class="cal-day">31</div></div>
+          <div class="cal-cell"><div class="cal-day">1</div></div>
+
+          <div class="cal-cell"><div class="cal-day">2</div><div class="cal-event">Réu Sprint</div></div>
+          <div class="cal-cell"><div class="cal-day">3</div></div>
+          <div class="cal-cell"><div class="cal-day">4</div><div class="cal-event green">Démo Ferrari</div></div>
+          <div class="cal-cell"><div class="cal-day">5</div><div class="cal-event red">Deadline DB</div></div>
+          <div class="cal-cell"><div class="cal-day">6</div></div>
+          <div class="cal-cell"><div class="cal-day">7</div></div>
+          <div class="cal-cell"><div class="cal-day">8</div></div>
+
+          <div class="cal-cell today">
+            <div class="cal-day">9</div>
+            <div class="cal-event">10:00 Daily</div>
+            <div class="cal-event orange">14:00 Comité</div>
+          </div>
+          <div class="cal-cell"><div class="cal-day">10</div><div class="cal-event red">Livraison Porsche</div></div>
+          <div class="cal-cell"><div class="cal-day">11</div><div class="cal-event red">MVP Mercedes</div></div>
+          <div class="cal-cell"><div class="cal-day">12</div><div class="cal-event orange">Audit sécu</div></div>
+          <div class="cal-cell"><div class="cal-day">13</div></div>
+          <div class="cal-cell"><div class="cal-day">14</div><div class="cal-event">Présentation</div></div>
+          <div class="cal-cell"><div class="cal-day">15</div></div>
+
+          <div class="cal-cell"><div class="cal-day">16</div><div class="cal-event">Sprint Review</div></div>
+          <div class="cal-cell"><div class="cal-day">17</div><div class="cal-event green">Workshop UX</div></div>
+          <div class="cal-cell"><div class="cal-day">18</div></div>
+          <div class="cal-cell"><div class="cal-day">19</div><div class="cal-event">1-1 Manager</div></div>
+          <div class="cal-cell"><div class="cal-day">20</div></div>
+          <div class="cal-cell"><div class="cal-day">21</div></div>
+          <div class="cal-cell"><div class="cal-day">22</div></div>
+
+          <div class="cal-cell"><div class="cal-day">23</div><div class="cal-event">Daily</div></div>
+          <div class="cal-cell"><div class="cal-day">24</div></div>
+          <div class="cal-cell"><div class="cal-day">25</div><div class="cal-event orange">Retro Sprint</div></div>
+          <div class="cal-cell"><div class="cal-day">26</div></div>
+          <div class="cal-cell"><div class="cal-day">27</div><div class="cal-event green">All Hands</div></div>
+          <div class="cal-cell"><div class="cal-day">28</div></div>
+          <div class="cal-cell"><div class="cal-day">29</div></div>
+
+          <div class="cal-cell"><div class="cal-day">30</div></div>
+          <div class="cal-cell muted"><div class="cal-day">1</div></div>
+          <div class="cal-cell muted"><div class="cal-day">2</div></div>
+          <div class="cal-cell muted"><div class="cal-day">3</div></div>
+          <div class="cal-cell muted"><div class="cal-day">4</div></div>
+          <div class="cal-cell muted"><div class="cal-day">5</div></div>
+          <div class="cal-cell muted"><div class="cal-day">6</div></div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- CHAT                                                         -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-chat">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Conversations</h1>
+            <p class="page-subtitle">Communication temps réel · 12 canaux actifs</p>
+          </div>
+        </div>
+
+        <div class="chat-layout">
+          <aside class="chat-sidebar">
+            <div class="chat-section-title">Canaux</div>
+            <div class="chat-item active"><span class="hash">#</span>général</div>
+            <div class="chat-item"><span class="hash">#</span>direction <span class="chat-unread">3</span></div>
+            <div class="chat-item"><span class="hash">#</span>ferrari-connect</div>
+            <div class="chat-item"><span class="hash">#</span>mercedes-amg <span class="chat-unread">7</span></div>
+            <div class="chat-item"><span class="hash">#</span>design-system</div>
+            <div class="chat-item"><span class="hash">#</span>dev-backend</div>
+            <div class="chat-item"><span class="hash">#</span>random</div>
+
+            <div class="chat-section-title">Messages directs</div>
+            <div class="chat-item"><span class="status"></span>Sarah K.</div>
+            <div class="chat-item"><span class="status"></span>Thomas R. <span class="chat-unread">1</span></div>
+            <div class="chat-item"><span class="status" style="background:var(--orange);"></span>Léa M.</div>
+            <div class="chat-item"><span class="status" style="background:var(--text-3);"></span>Marc D.</div>
+            <div class="chat-item"><span class="status"></span>Émilie L.</div>
+          </aside>
+
+          <div class="chat-main">
+            <div class="chat-head">
+              <div>
+                <div class="chat-channel-name"># général</div>
+                <div class="chat-channel-desc">Canal principal · 42 membres</div>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <div class="avatars-stack">
+                  <div class="avatar" style="width:24px;height:24px;font-size:9px;background:#E10600;">SK</div>
+                  <div class="avatar" style="width:24px;height:24px;font-size:9px;background:#3B82F6;">TR</div>
+                  <div class="avatar" style="width:24px;height:24px;font-size:9px;background:#22C55E;">LM</div>
+                  <div class="avatar" style="width:24px;height:24px;font-size:9px;background:var(--border-2);color:var(--text-2);">+39</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-messages">
+              <div class="msg">
+                <div class="avatar" style="background:linear-gradient(135deg,#E10600,#8B0000);">SK</div>
+                <div class="msg-content">
+                  <div class="msg-head"><span class="msg-author">Sarah Kambo</span><span class="msg-time">09:24</span></div>
+                  <div class="msg-text">Bonjour à toutes et tous 🏁 La démo Ferrari Connect 2.0 hier soir s'est très bien passée ! Le client est ravi du nouveau dashboard analytique.</div>
+                  <div class="msg-reactions">
+                    <span class="reaction">🔥 8</span>
+                    <span class="reaction">🎉 5</span>
+                    <span class="reaction">🏆 3</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="msg">
+                <div class="avatar" style="background:linear-gradient(135deg,#3B82F6,#1e40af);">TR</div>
+                <div class="msg-content">
+                  <div class="msg-head"><span class="msg-author">Thomas Renard</span><span class="msg-time">09:32</span></div>
+                  <div class="msg-text">Excellent ! Pour info la PR #482 sur le refactor du module auth est prête à être reviewée. <strong style="color:var(--blue);">@Marc D.</strong> tu peux jeter un œil quand tu as un moment ?</div>
+                </div>
+              </div>
+
+              <div class="msg">
+                <div class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6d28d9);">MD</div>
+                <div class="msg-content">
+                  <div class="msg-head"><span class="msg-author">Marc Dupuis</span><span class="msg-time">09:45</span></div>
+                  <div class="msg-text">Je regarde ça dans l'heure 👍</div>
+                </div>
+              </div>
+
+              <div class="msg">
+                <div class="avatar">AM</div>
+                <div class="msg-content">
+                  <div class="msg-head"><span class="msg-author">Alex Martin</span><span class="msg-time">10:12</span></div>
+                  <div class="msg-text">⚠️ Rappel : le comité de direction est à 14h00 aujourd'hui en salle Monza. Merci de préparer vos slides pour la revue Q2.</div>
+                  <div class="msg-reactions">
+                    <span class="reaction">👍 12</span>
+                    <span class="reaction">📋 4</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="msg">
+                <div class="avatar" style="background:linear-gradient(135deg,#22C55E,#16a34a);">LM</div>
+                <div class="msg-content">
+                  <div class="msg-head"><span class="msg-author">Léa Mercier</span><span class="msg-time">10:28</span></div>
+                  <div class="msg-text">J'ai partagé le nouveau prototype mobile dans <strong style="color:var(--red-soft);">#design-system</strong>, retours bienvenus 🎨</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-input">
+              <div class="chat-input-box">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15.172 7l-6.586 6.586a2 2 0 1 0 2.828 2.828l6.414-6.586a4 4 0 0 0-5.656-5.656l-6.415 6.585a6 6 0 1 0 8.486 8.486L20.5 13"/></svg>
+                <input placeholder="Message #général" />
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14.828 14.828a4 4 0 0 1-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+                <svg fill="none" stroke="var(--red-soft)" stroke-width="2.5" viewBox="0 0 24 24" style="cursor:pointer;"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- DOCUMENTS                                                    -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-documents">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Documents</h1>
+            <p class="page-subtitle">Bibliothèque centrale · 1 247 documents</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn-ghost">Importer</button>
+            <button class="btn-primary"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>Nouveau document</button>
+          </div>
+        </div>
+
+        <div class="docs-layout">
+          <aside class="file-tree">
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);font-weight:600;margin-bottom:10px;padding:0 10px;">Bibliothèque</div>
+            <div class="tree-item folder"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-6l-2-2H5a2 2 0 0 0-2 2z"/></svg>Tous les documents</div>
+            <div class="tree-nested">
+              <div class="tree-item folder">📂 Projets</div>
+              <div class="tree-nested">
+                <div class="tree-item">📄 Ferrari Connect</div>
+                <div class="tree-item">📄 Mercedes AMG</div>
+                <div class="tree-item">📄 Porsche Track</div>
+              </div>
+              <div class="tree-item folder">📂 Départements</div>
+              <div class="tree-item folder">📂 Procédures</div>
+              <div class="tree-item folder">📂 Contrats</div>
+              <div class="tree-item folder">📂 Archives</div>
+            </div>
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-3);font-weight:600;margin:14px 0 6px;padding:0 10px;">Favoris</div>
+            <div class="tree-item">⭐ Roadmap Q3 2026</div>
+            <div class="tree-item">⭐ Charte graphique</div>
+            <div class="tree-item">⭐ Onboarding RH</div>
+          </aside>
+
+          <div class="panel" style="padding:0;">
+            <table class="data-table" style="border:none;">
+              <thead>
+                <tr><th>Nom</th><th>Auteur</th><th>Version</th><th>Statut</th><th>Modifié</th><th></th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><span style="width:32px;height:32px;background:rgba(225,6,0,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--red-soft);font-weight:700;font-size:11px;">PDF</span><div><div style="font-weight:600;">Spec API Ferrari Connect v2.4</div><div style="font-size:11px;color:var(--text-3);">2.4 MB</div></div></div></td>
+                  <td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar" style="width:24px;height:24px;font-size:9px;background:#E10600;">SK</div>Sarah K.</div></td>
+                  <td><span class="badge badge-gray">v2.4</span></td>
+                  <td><span class="badge badge-green"><span class="dot-mini"></span>Validé</span></td>
+                  <td>Il y a 5 min</td>
+                  <td><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td>
+                </tr>
+                <tr>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><span style="width:32px;height:32px;background:rgba(59,130,246,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:700;font-size:11px;">DOC</span><div><div style="font-weight:600;">Roadmap stratégique Q3 2026</div><div style="font-size:11px;color:var(--text-3);">847 KB</div></div></div></td>
+                  <td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar" style="width:24px;height:24px;font-size:9px;">AM</div>Alex M.</div></td>
+                  <td><span class="badge badge-gray">v1.7</span></td>
+                  <td><span class="badge badge-orange"><span class="dot-mini"></span>En révision</span></td>
+                  <td>Il y a 1 h</td>
+                  <td><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td>
+                </tr>
+                <tr>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><span style="width:32px;height:32px;background:rgba(139,92,246,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--purple);font-weight:700;font-size:11px;">FIG</span><div><div style="font-weight:600;">Design system Pitlane v3</div><div style="font-size:11px;color:var(--text-3);">12.8 MB</div></div></div></td>
+                  <td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar" style="width:24px;height:24px;font-size:9px;background:#22C55E;">LM</div>Léa M.</div></td>
+                  <td><span class="badge badge-gray">v3.0</span></td>
+                  <td><span class="badge badge-green"><span class="dot-mini"></span>Validé</span></td>
+                  <td>Il y a 3 h</td>
+                  <td><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td>
+                </tr>
+                <tr>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><span style="width:32px;height:32px;background:rgba(34,197,94,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--green);font-weight:700;font-size:11px;">XLS</span><div><div style="font-weight:600;">Budget consolidé Q2</div><div style="font-size:11px;color:var(--text-3);">412 KB</div></div></div></td>
+                  <td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar" style="width:24px;height:24px;font-size:9px;background:#F59E0B;">JP</div>Jean P.</div></td>
+                  <td><span class="badge badge-gray">v4.2</span></td>
+                  <td><span class="badge badge-blue"><span class="dot-mini"></span>Brouillon</span></td>
+                  <td>Hier</td>
+                  <td><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td>
+                </tr>
+                <tr>
+                  <td><div style="display:flex;align-items:center;gap:10px;"><span style="width:32px;height:32px;background:rgba(225,6,0,0.15);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--red-soft);font-weight:700;font-size:11px;">PDF</span><div><div style="font-weight:600;">Contrat-cadre Porsche Digital</div><div style="font-size:11px;color:var(--text-3);">3.1 MB</div></div></div></td>
+                  <td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar" style="width:24px;height:24px;font-size:9px;background:#3B82F6;">TR</div>Thomas R.</div></td>
+                  <td><span class="badge badge-gray">v1.0</span></td>
+                  <td><span class="badge badge-green"><span class="dot-mini"></span>Validé</span></td>
+                  <td>2 jours</td>
+                  <td><svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- WIKI                                                         -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-wiki">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Wiki Interne</h1>
+            <p class="page-subtitle">Base de connaissances · 384 articles</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn-primary"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>Nouvelle page</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="panel" style="padding:18px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;"><div class="kpi-icon" style="background:rgba(225,6,0,0.15);color:var(--red-soft);"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg></div><strong style="font-size:14px;">Procédures</strong></div>
+            <div style="font-size:12px;color:var(--text-3);margin-bottom:10px;">87 articles</div>
+            <div style="font-size:12px;color:var(--text-2);">Onboarding, qualité, sécurité, RH...</div>
+          </div>
+          <div class="panel" style="padding:18px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;"><div class="kpi-icon" style="background:rgba(59,130,246,0.15);color:var(--blue);"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093M12 17h.01"/></svg></div><strong style="font-size:14px;">FAQ</strong></div>
+            <div style="font-size:12px;color:var(--text-3);margin-bottom:10px;">142 réponses</div>
+            <div style="font-size:12px;color:var(--text-2);">Réponses aux questions fréquentes</div>
+          </div>
+          <div class="panel" style="padding:18px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;"><div class="kpi-icon" style="background:rgba(34,197,94,0.15);color:var(--green);"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg></div><strong style="font-size:14px;">Comptes-rendus</strong></div>
+            <div style="font-size:12px;color:var(--text-3);margin-bottom:10px;">96 réunions</div>
+            <div style="font-size:12px;color:var(--text-2);">Notes et décisions stratégiques</div>
+          </div>
+          <div class="panel" style="padding:18px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;"><div class="kpi-icon" style="background:rgba(245,158,11,0.15);color:var(--orange);"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><strong style="font-size:14px;">REX</strong></div>
+            <div style="font-size:12px;color:var(--text-3);margin-bottom:10px;">59 retours</div>
+            <div style="font-size:12px;color:var(--text-2);">Retours d'expérience projets</div>
+          </div>
+        </div>
+
+        <div class="dash-grid">
+          <div class="panel">
+            <div class="panel-header"><div class="panel-title">Articles récents</div><span class="panel-link">Voir tout</span></div>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div style="padding:14px;background:var(--panel-2);border-radius:8px;cursor:pointer;">
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:14px;">Procédure d'onboarding développeur</strong><span class="badge badge-purple">Procédure</span></div>
+                <div style="font-size:12px;color:var(--text-3);">Mis à jour par Sarah K. · Il y a 2 h · 12 vues aujourd'hui</div>
+              </div>
+              <div style="padding:14px;background:var(--panel-2);border-radius:8px;cursor:pointer;">
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:14px;">REX migration cloud Azure → AWS</strong><span class="badge badge-orange">REX</span></div>
+                <div style="font-size:12px;color:var(--text-3);">Publié par Thomas R. · Il y a 1 jour · 47 vues</div>
+              </div>
+              <div style="padding:14px;background:var(--panel-2);border-radius:8px;cursor:pointer;">
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:14px;">CR Comité Direction — Mai 2026</strong><span class="badge badge-green">Réunion</span></div>
+                <div style="font-size:12px;color:var(--text-3);">Publié par Alex M. · Il y a 3 jours · 89 vues</div>
+              </div>
+              <div style="padding:14px;background:var(--panel-2);border-radius:8px;cursor:pointer;">
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><strong style="font-size:14px;">Décision : Adoption de Next.js 15</strong><span class="badge badge-blue">Décision</span></div>
+                <div style="font-size:12px;color:var(--text-3);">Publié par Marc D. · Il y a 5 jours · 124 vues</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header"><div class="panel-title">Articles populaires</div></div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+                <div style="font-size:18px;font-weight:700;color:var(--red-soft);width:24px;">1</div>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:500;">Guide complet Git & GitHub</div><div style="font-size:11px;color:var(--text-3);">2 847 vues</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+                <div style="font-size:18px;font-weight:700;color:var(--orange);width:24px;">2</div>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:500;">Process de validation document</div><div style="font-size:11px;color:var(--text-3);">1 932 vues</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+                <div style="font-size:18px;font-weight:700;color:var(--text-3);width:24px;">3</div>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:500;">Demande de congés</div><div style="font-size:11px;color:var(--text-3);">1 654 vues</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+                <div style="font-size:18px;font-weight:700;color:var(--text-3);width:24px;">4</div>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:500;">Setup environnement local</div><div style="font-size:11px;color:var(--text-3);">1 421 vues</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+                <div style="font-size:18px;font-weight:700;color:var(--text-3);width:24px;">5</div>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:500;">Charte de communication</div><div style="font-size:11px;color:var(--text-3);">1 287 vues</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- TEAMS                                                        -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-teams">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Équipes & Collaborateurs</h1>
+            <p class="page-subtitle">42 collaborateurs · 7 départements</p>
+          </div>
+          <div class="page-actions">
+            <div class="view-toggle">
+              <button class="active">Annuaire</button>
+              <button>Organigramme</button>
+              <button>Départements</button>
+            </div>
+            <button class="btn-primary">
+              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+              Inviter
+            </button>
+          </div>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#E10600,#8B0000);">SK</div>
+            <div class="team-name">Sarah Kambo</div>
+            <div class="team-role">Lead Product Manager</div>
+            <span class="badge badge-green"><span class="dot-mini"></span>En ligne</span>
+            <div class="team-stats">
+              <div class="team-stat"><div class="team-stat-val">12</div><div class="team-stat-lbl">Projets</div></div>
+              <div class="team-stat"><div class="team-stat-val">94%</div><div class="team-stat-lbl">Perf</div></div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#3B82F6,#1e40af);">TR</div>
+            <div class="team-name">Thomas Renard</div>
+            <div class="team-role">Tech Lead Backend</div>
+            <span class="badge badge-green"><span class="dot-mini"></span>En ligne</span>
+            <div class="team-stats">
+              <div class="team-stat"><div class="team-stat-val">8</div><div class="team-stat-lbl">Projets</div></div>
+              <div class="team-stat"><div class="team-stat-val">88%</div><div class="team-stat-lbl">Perf</div></div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#22C55E,#16a34a);">LM</div>
+            <div class="team-name">Léa Mercier</div>
+            <div class="team-role">Lead Designer UX/UI</div>
+            <span class="badge badge-orange"><span class="dot-mini"></span>Occupée</span>
+            <div class="team-stats">
+              <div class="team-stat"><div class="team-stat-val">15</div><div class="team-stat-lbl">Projets</div></div>
+              <div class="team-stat"><div class="team-stat-val">92%</div><div class="team-stat-lbl">Perf</div></div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6d28d9);">MD</div>
+            <div class="team-name">Marc Dupuis</div>
+            <div class="team-role">Senior Developer</div>
+            <span class="badge badge-gray"><span class="dot-mini"></span>Absent</span>
+            <div class="team-stats">
+              <div class="team-stat"><div class="team-stat-val">6</div><div class="team-stat-lbl">Projets</div></div>
+              <div class="team-stat"><div class="team-stat-val">85%</div><div class="team-stat-lbl">Perf</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- WORKLOAD                                                     -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-workload">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Charge de travail</h1>
+            <p class="page-subtitle">Heatmap équipe · 14 prochains jours</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="heatmap">
+            <div class="heatmap-row">
+              <div class="heatmap-name">Sarah Kambo</div>
+              <div class="heatmap-cells">
+                <div class="heatmap-cell l2"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell l4"></div>
+                <div class="heatmap-cell l3"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell"></div>
+                <div class="heatmap-cell"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell l4"></div>
+                <div class="heatmap-cell l5"></div><div class="heatmap-cell l4"></div><div class="heatmap-cell l3"></div>
+                <div class="heatmap-cell"></div><div class="heatmap-cell"></div>
+              </div>
+            </div>
+            <div class="heatmap-row">
+              <div class="heatmap-name">Thomas Renard</div>
+              <div class="heatmap-cells">
+                <div class="heatmap-cell l3"></div><div class="heatmap-cell l4"></div><div class="heatmap-cell l5"></div>
+                <div class="heatmap-cell l5"></div><div class="heatmap-cell l4"></div><div class="heatmap-cell"></div>
+                <div class="heatmap-cell"></div><div class="heatmap-cell l4"></div><div class="heatmap-cell l3"></div>
+                <div class="heatmap-cell l3"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l2"></div>
+                <div class="heatmap-cell"></div><div class="heatmap-cell"></div>
+              </div>
+            </div>
+            <div class="heatmap-row">
+              <div class="heatmap-name">Léa Mercier</div>
+              <div class="heatmap-cells">
+                <div class="heatmap-cell l2"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l3"></div>
+                <div class="heatmap-cell l3"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell"></div>
+                <div class="heatmap-cell"></div><div class="heatmap-cell l2"></div><div class="heatmap-cell l3"></div>
+                <div class="heatmap-cell l4"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell l2"></div>
+                <div class="heatmap-cell"></div><div class="heatmap-cell"></div>
+              </div>
+            </div>
+            <div class="heatmap-row">
+              <div class="heatmap-name">Marc Dupuis</div>
+              <div class="heatmap-cells">
+                <div class="heatmap-cell l4"></div><div class="heatmap-cell l5"></div><div class="heatmap-cell l5"></div>
+                <div class="heatmap-cell l4"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell"></div>
+                <div class="heatmap-cell"></div><div class="heatmap-cell l3"></div><div class="heatmap-cell l4"></div>
+                <div class="heatmap-cell l4"></div><div class="heatmap-cell l5"></div><div class="heatmap-cell l5"></div>
+                <div class="heatmap-cell"></div><div class="heatmap-cell"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- AUTOMATIONS                                                  -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-automations">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Automatisations</h1>
+            <p class="page-subtitle">12 flows actifs · 847 exécutions ce mois</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn-primary">
+              <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+              Nouveau flow
+            </button>
+          </div>
+        </div>
+
+        <div class="flow-canvas">
+          <div class="flow-node trigger" style="top:40px;left:40px;">
+            <div class="flow-node-label">⚡ Déclencheur</div>
+            <div class="flow-node-title">Nouvelle tâche créée</div>
+          </div>
+          <div class="flow-node condition" style="top:40px;left:320px;">
+            <div class="flow-node-label">❓ Condition</div>
+            <div class="flow-node-title">Priorité = Critique ?</div>
+          </div>
+          <div class="flow-node action" style="top:40px;left:600px;">
+            <div class="flow-node-label">⚙ Action</div>
+            <div class="flow-node-title">Notifier le manager</div>
+          </div>
+          <div class="flow-node action" style="top:180px;left:600px;">
+            <div class="flow-node-label">⚙ Action</div>
+            <div class="flow-node-title">Créer canal Slack</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- NOTIFICATIONS                                                -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-notifications">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Notifications</h1>
+            <p class="page-subtitle">9 non lues · 24 cette semaine</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn-ghost">Tout marquer comme lu</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="notif-item unread">
+            <div class="notif-icon" style="background:rgba(225,6,0,0.15);color:var(--red-soft);">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01M5 19h14a2 2 0 0 0 1.84-2.75L13.74 4a2 2 0 0 0-3.48 0L3.16 16.25A2 2 0 0 0 5 19z"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:600;font-size:13px;">Risque critique détecté</div>
+              <div style="font-size:12px;color:var(--text-2);margin-top:2px;">Le projet Porsche Track présente un risque de retard de livraison.</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:4px;">Il y a 5 min</div>
+            </div>
+          </div>
+          <div class="notif-item unread">
+            <div class="notif-icon" style="background:rgba(59,130,246,0.15);color:var(--blue);">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:600;font-size:13px;">Thomas R. vous a mentionné</div>
+              <div style="font-size:12px;color:var(--text-2);margin-top:2px;">Dans #général : « @Alex peux-tu valider la PR #482 ? »</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:4px;">Il y a 22 min</div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon" style="background:rgba(34,197,94,0.15);color:var(--green);">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:600;font-size:13px;">Tâche terminée par Marc D.</div>
+              <div style="font-size:12px;color:var(--text-2);margin-top:2px;">« Refonte endpoint /users » a été marquée comme terminée.</div>
+              <div style="font-size:11px;color:var(--text-3);margin-top:4px;">Il y a 1 h</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================== -->
+      <!-- ADMIN                                                        -->
+      <!-- =========================================================== -->
+      <div class="page" id="page-admin">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Paramètres</h1>
+            <p class="page-subtitle">Configuration de la plateforme</p>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <div class="tab active">Général</div>
+          <div class="tab">Utilisateurs</div>
+          <div class="tab">Permissions</div>
+          <div class="tab">Intégrations</div>
+          <div class="tab">Facturation</div>
+          <div class="tab">Sécurité</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header"><div class="panel-title">Informations de l'organisation</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div>
+              <label style="font-size:12px;color:var(--text-3);display:block;margin-bottom:6px;">Nom</label>
+              <input style="width:100%;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;" value="Pitlane Performance Group" />
+            </div>
+            <div>
+              <label style="font-size:12px;color:var(--text-3);display:block;margin-bottom:6px;">Domaine</label>
+              <input style="width:100%;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;" value="pitlane.os" />
+            </div>
+            <div>
+              <label style="font-size:12px;color:var(--text-3);display:block;margin-bottom:6px;">Fuseau horaire</label>
+              <input style="width:100%;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;" value="Europe/Paris (UTC+1)" />
+            </div>
+            <div>
+              <label style="font-size:12px;color:var(--text-3);display:block;margin-bottom:6px;">Langue</label>
+              <input style="width:100%;background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;" value="Français" />
+            </div>
+          </div>
+          <div style="margin-top:24px;display:flex;gap:8px;justify-content:flex-end;">
+            <button class="btn-ghost">Annuler</button>
+            <button class="btn-primary">Enregistrer</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.content -->
+  </main>
+</div><!-- /.app -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<!-- ✅ JS externe -->
+<script src="app.js"></script>
+</body>
+</html>
